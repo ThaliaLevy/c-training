@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+
+<body>
+
+    <p> Menu <br>
+        escolha uma das opções abaixo: <br>
+        1 - para café da manhã;<br>
+        2 - para almoço;<br>
+        3 - para janta;<br>
+        4 - para ceia.<br>
+    </p>
+
+    <script>
+        var op = prompt("digite um número de 1 a 4");
+        if (op == 1) {
+            document.write("você escolheu café da manhã!");
+        } else {
+            if (op == 2) {
+                document.write("você escolheu almoço!");
+            } else {
+                if (op == 3) {
+                    document.write("você escolheu janta!");
+                } else {
+                    if (op == 4) {
+                        document.write("você escolheu ceia!");
+                    } else {
+                        document.write("Opção inválida.");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
