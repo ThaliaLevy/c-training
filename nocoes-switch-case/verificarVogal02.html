@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>switch e case melhorado; verificar se caracter é vogal</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <p>
+    <h1>Verificar se é vogal</h1>
+    </p>
+    <script>
+        var op = prompt("Digite o caracter que deseja analisar se é vogal: ");
+        switch (op) {
+            case 'a': case 'A': case 'e': case 'E': case 'i': case 'I': case 'o': case 'O': case 'u': case 'U':
+                document.write("<font size = 150%><br>O caracter" + " ' " + op + " ' " + " é vogal!");
+                break;
+            default:
+                document.write("<font size = 100%><br>O caracter " + " ' " + op + " ' " + " não é vogal.");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noções de switch e case; saber se caracter é vogal</title>
+</head>
+
+<body>
+    <script>
+        var op = prompt("Digite o caracter que deseja saber se é uma vogal: ");
+        switch (op) {
+            case 'a':
+                document.write("O caracter <b>" + op + "</b> é vogal!"); //<b> transforma em negrito
+                break; //break interrompe o script
+            case 'e':
+                document.write("O caracter <b>" + op + "</b> é vogal!");
+                break;
+            case 'i':
+                document.write("O caracter <b>" + op + "</b> é vogal!");
+                break;
+            case 'o':
+                document.write("O caracter <b> " + op + "</b> é vogal!");
+                break;
+            case 'u':
+                document.write("O caracter <b>" + op + "</b> é vogal!");
+                break;
+            default:
+                document.write("O caracter " + op + " não é vogal.");
+        }
+    </script>
+</body>
+
+</html>
