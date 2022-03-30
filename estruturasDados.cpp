@@ -45,17 +45,81 @@ int escolherAcaoPilha(){
 	return acaoEscolhida;
 }
 
+void imprimirLista(int vetorLista[10]){
+	if(controladoraLista != 0){
+		printf("\n\t");	
+		for(int i = 1; i <= controladoraLista; i++){
+			printf("%d ", vetorLista[i-1]);
+		}
+		printf("\n\n");
+	}
+}
+
 void inserirItemNaLista(int vetorLista[10]){
+	int numeroInserido;
+	int auxiliar;
 	
+	if(controladoraLista == 10){
+		printf("\n\tLista cheia! Nao e possivel adicionar mais itens a lista.\n");
+	}else{
+		printf("\tDigite o numero a ser inserido: ");
+		scanf("%d", &numeroInserido);
+		vetorLista[controladoraLista] = numeroInserido;
+		
+		for(int i = 0; i <= controladoraLista; i++){
+			for(int j = i+1; j <= controladoraLista; j++){
+				if(vetorLista[i] > vetorLista[j]){
+					auxiliar = vetorLista[i];
+					vetorLista[i] = vetorLista[j];
+					vetorLista[j] = auxiliar;	
+				}
+			}
+		}
+		controladoraLista++;
+	}
 }
 
 void excluirItemDaLista(int vetorLista[10]){
+	int numeroExcluido;
+	bool auxiliar = false;
 	
+	if(controladoraLista == 0){
+		printf("\n\tLista vazia! Nao ha itens a serem excluidos.\n");
+	}else{
+		printf("\tDigite o numero a ser excluido: ");
+		scanf("%d", &numeroExcluido);
+		
+		//verifica se o numero a ser excluido esta na lista
+		for(int k = 0; k <= controladoraLista; k++){
+			if(numeroExcluido == vetorLista[k]){
+				auxiliar = true;
+			}
+		}
+		
+		if(auxiliar == true){
+			for(int j = 0; j <= controladoraLista; j++){
+				if(numeroExcluido == vetorLista[j]){
+					for(int i = j+1; i <= controladoraLista; i++){
+						vetorLista[j] = vetorLista[i];
+						j++;
+					}
+					break;
+				}
+			}
+			controladoraLista--;
+		}else{
+			printf("\n\tImpossivel excluir. Numero nao encontra-se na lista.\n");
+		}
+	}
 }
 
 void imprimirFila(int vetorFila[10]){
-	for(int i = 1; i <= controladoraFila; i++){
-		printf("\n\t%d", vetorFila[i-1]);
+	if(controladoraFila != 0){
+		printf("\n\t");
+		for(int i = 1; i <= controladoraFila; i++){
+			printf("%d ", vetorFila[i-1]);
+		}
+		printf("\n\n");
 	}
 }
 			
@@ -88,8 +152,11 @@ void excluirItemDaFila(int vetorFila[10]){
 }
 
 void imprimirPilha(int vetorPilha[10]){
-	for(int i = controladoraPilha; i >= 1; i--){
-		printf("\n\t%d", vetorPilha[i-1]);
+	if(controladoraPilha != 0){
+		for(int i = controladoraPilha; i >= 1; i--){
+			printf("\n\t%d", vetorPilha[i-1]);
+		}
+		printf("\n\n");
 	}
 }
 
@@ -113,7 +180,7 @@ void excluirItemDaPilha(int vetorPilha[10]){
 	if(controladoraPilha != 0){
 		controladoraPilha = controladoraPilha-1;
 	}else{
-		printf("\n\tLista vazia! Nao ha itens a serem removidos.\n");
+		printf("\n\tPilha vazia! Nao ha itens a serem removidos da pilha.\n");
 	}
 }
 
@@ -137,10 +204,12 @@ main(){
 				while(opcaoAcao != 0){
 					switch(opcaoAcao){
 						case 1: {
+							imprimirLista(vetorLista);
 							inserirItemNaLista(vetorLista);
 							break;
 						}
 						case 2: {
+							imprimirLista(vetorLista);
 							excluirItemDaLista(vetorLista);
 							break;
 						}
@@ -149,7 +218,7 @@ main(){
 							break;
 						}
 					}
-				//	imprimirLista(vetorLista);
+					imprimirLista(vetorLista);
 					opcaoAcao = escolherAcaoLista();
 				}
 				break;
@@ -161,10 +230,12 @@ main(){
 				while(opcaoAcao != 0){
 					switch(opcaoAcao){
 						case 1: {
+							imprimirFila(vetorFila);
 							inserirItemNaFila(vetorFila);
 							break;
 						}
 						case 2: {
+							imprimirFila(vetorFila);
 							excluirItemDaFila(vetorFila);
 							break;
 						}
@@ -185,10 +256,12 @@ main(){
 				while(opcaoAcao != 0){
 					switch(opcaoAcao){
 						case 1: {
+							imprimirPilha(vetorPilha);
 							inserirItemNaPilha(vetorPilha);
 							break;
 						}
 						case 2: {
+							imprimirPilha(vetorPilha);
 							excluirItemDaPilha(vetorPilha);
 							break;
 						}
@@ -206,7 +279,6 @@ main(){
 				printf("Opcao invalida. Por favor, tente novamente. \n");
 				break;
 			}
-			
 		}
 		opcaoEstrutura = escolherEstrutura();
 	}
